@@ -4,9 +4,9 @@ class RestaurantPizzasController < ApplicationController
     end
 
     def create
-        @restaurant_pizza = RestaurantPizza.new{restaurantpizza_params}
+        @restaurant_pizza = RestaurantPizza.new(restaurantpizza_params)
         if @restaurant_pizza.save
-            redirect_to @restaurant_pizza
+            redirect_to @restaurant_pizza.restaurant
         else
             flash[:errors] = @customer.errors.full_messages
             render :new
