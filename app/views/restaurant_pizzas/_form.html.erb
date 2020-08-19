@@ -1,0 +1,24 @@
+<% if !!flash[:errors] %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @restaurant_pizza do |f| %>
+    <%= f.label :restaurant_id  %>
+    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name  %>
+
+    <%= f.label :pizza_id  %>
+    <%= f.collection_select :pizza_id, Pizza.all, :id, :name  %>
+
+
+
+    <%= f.label :price %>
+    <%= f.range_field :price, in: 1..30 %>
+
+    
+
+ <%= f.submit %>
+<% end %>
